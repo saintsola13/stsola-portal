@@ -1,16 +1,29 @@
 # St Sola // Portal
 
-Private glass-tile launcher for the St Sola network.
+Glass-tile launcher for the St Sola network.
 
-**PIN:** 6-digit entry (set in code)
+**PIN:** `791313`
 
 ## Features
-- Cinematic lock screen with numpad
-- Glassmorphism tiles linking out to all key sites
-- Background art locked to the heat asset
-- Session unlock (refreshes stay open until Lock)
+- Cinematic 6-digit PIN lock screen + numpad
+- Real glassmorphism tiles (blur + glow)
+- Heat background matching the asset photo energy
+- All 9 sites live:
+  - StSola.com
+  - ITIA Galleria
+  - Ricordi
+  - Stzy Warroom
+  - StSola Vault
+  - MedAtlas
+  - Aura Web
+  - Saints Generator
+  - HangMeng
+- Session stays unlocked until you hit LOCK
 
-## Deploy
-Just open `index.html` or push to GitHub Pages / Cloudflare Pages / any static host.
+## Live
+Open the repo → Settings → Pages → Deploy from main branch → root.
+Or just open `index.html` locally.
+
+Repo: https://github.com/saintsola13/stsola-portal
 
 Built for the culture. Loyalty over bullshit.
