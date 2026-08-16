@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>St Sola // Portal</title>
+  <title>FCKOFF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&display=swap" rel="stylesheet">
@@ -32,7 +32,6 @@
     }
 
     body {
-      /* Matches the heat asset: blue top-left → purple → fiery orange/red burst */
       background: 
         radial-gradient(ellipse 90% 70% at 75% 65%, rgba(255, 90, 20, 0.85) 0%, transparent 55%),
         radial-gradient(ellipse 60% 50% at 80% 40%, rgba(255, 40, 10, 0.7) 0%, transparent 50%),
@@ -41,7 +40,6 @@
       background-attachment: fixed;
     }
 
-    /* Extra dark vignette for readability */
     body::before {
       content: '';
       position: fixed;
@@ -61,7 +59,6 @@
       justify-content: center;
     }
 
-    /* ========== LOCK SCREEN ========== */
     #lock-screen {
       display: flex;
       flex-direction: column;
@@ -73,9 +70,7 @@
       animation: fadeIn 0.55s ease;
     }
 
-    #lock-screen.hidden {
-      display: none;
-    }
+    #lock-screen.hidden { display: none; }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
@@ -129,9 +124,7 @@
       letter-spacing: 0.1em;
     }
 
-    .pin-error.show {
-      opacity: 1;
-    }
+    .pin-error.show { opacity: 1; }
 
     .numpad {
       display: grid;
@@ -167,12 +160,8 @@
       transform: scale(0.95);
     }
 
-    .num-btn.clear {
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-    }
+    .num-btn.clear { font-size: 0.8rem; letter-spacing: 0.06em; }
 
-    /* ========== MAIN PORTAL ========== */
     #portal {
       display: none;
       flex-direction: column;
@@ -183,9 +172,7 @@
       animation: fadeIn 0.65s ease;
     }
 
-    #portal.visible {
-      display: flex;
-    }
+    #portal.visible { display: flex; }
 
     .portal-header {
       text-align: center;
@@ -251,14 +238,10 @@
     .tile:hover {
       transform: translateY(-5px) scale(1.015);
       border-color: rgba(255, 90, 50, 0.6);
-      box-shadow:
-        0 14px 36px rgba(0, 0, 0, 0.5),
-        0 0 28px rgba(255, 40, 30, 0.3);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 40, 30, 0.3);
     }
 
-    .tile:hover::before {
-      opacity: 1;
-    }
+    .tile:hover::before { opacity: 1; }
 
     .tile-title {
       font-weight: 700;
@@ -322,7 +305,6 @@
       background: rgba(255, 40, 30, 0.2);
     }
 
-    /* ========== AUDIO PLAYER ========== */
     .audio-bar {
       position: fixed;
       bottom: 0;
@@ -340,9 +322,7 @@
       box-shadow: 0 -8px 32px rgba(0,0,0,0.4);
     }
 
-    .audio-bar.visible {
-      display: flex;
-    }
+    .audio-bar.visible { display: flex; }
 
     .audio-play {
       width: 42px;
@@ -365,10 +345,7 @@
       box-shadow: 0 0 16px rgba(255, 40, 30, 0.4);
     }
 
-    .audio-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .audio-info { flex: 1; min-width: 0; }
 
     .audio-title {
       font-size: 0.85rem;
@@ -404,9 +381,7 @@
       transition: width 0.1s linear;
     }
 
-    @media (max-width: 500px) {
-      .audio-progress { display: none; }
-    }
+    @media (max-width: 500px) { .audio-progress { display: none; } }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(14px); }
@@ -414,21 +389,15 @@
     }
 
     @media (max-width: 600px) {
-      .tiles-grid {
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
-      }
-      .numpad {
-        max-width: 250px;
-      }
+      .tiles-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+      .numpad { max-width: 250px; }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <!-- LOCK SCREEN -->
     <div id="lock-screen">
-      <div class="logo">St Sola</div>
+      <div class="logo">FCKOFF</div>
       <div class="subtitle">Loyalty Over Bullshit</div>
 
       <div class="pin-dots" id="pin-dots">
@@ -457,29 +426,25 @@
       </div>
     </div>
 
-    <!-- PORTAL -->
     <div id="portal">
       <div class="portal-header">
-        <h1>ST SOLA // PORTAL</h1>
-        <p>BUILDER · SAINT · CREATOR</p>
+        <h1>FCKOFF</h1>
+        <p>90s HIP HOP · WEST COAST</p>
       </div>
 
-      <div class="tiles-grid" id="tiles">
-        <!-- tiles injected by JS -->
-      </div>
+      <div class="tiles-grid" id="tiles"></div>
 
       <div class="footer">
-        <div>WEST COAST · 90s FOREVER</div>
+        <div>FCKOFF · 90s FOREVER</div>
         <button class="lock-btn" id="lock-btn">LOCK</button>
       </div>
     </div>
 
-    <!-- AUDIO BAR -->
     <div class="audio-bar" id="audio-bar">
       <button class="audio-play" id="audio-play" aria-label="Play/Pause">▶</button>
       <div class="audio-info">
-        <div class="audio-title">Saint Sola</div>
-        <div class="audio-sub">Remix · Portal Theme</div>
+        <div class="audio-title">FCKOFF</div>
+        <div class="audio-sub">Theme Track</div>
       </div>
       <div class="audio-progress" id="audio-progress">
         <div class="audio-progress-fill" id="audio-fill"></div>
@@ -514,9 +479,7 @@
     const tilesEl = document.getElementById('tiles');
 
     function updateDots() {
-      dots.forEach((d, i) => {
-        d.classList.toggle('filled', i < currentPin.length);
-      });
+      dots.forEach((d, i) => d.classList.toggle('filled', i < currentPin.length));
     }
 
     function showError() {
@@ -529,8 +492,7 @@
       portal.classList.add('visible');
       sessionStorage.setItem('stsola_unlocked', '1');
       document.getElementById('audio-bar').classList.add('visible');
-      const a = document.getElementById('theme-audio');
-      a.play().catch(() => {});
+      document.getElementById('theme-audio').play().catch(() => {});
     }
 
     function lock() {
@@ -544,50 +506,31 @@
     }
 
     function checkPin() {
-      if (currentPin === CORRECT_PIN) {
-        unlock();
-      } else {
-        showError();
-        currentPin = '';
-        updateDots();
-      }
+      if (currentPin === CORRECT_PIN) unlock();
+      else { showError(); currentPin = ''; updateDots(); }
     }
 
     function addDigit(n) {
       if (currentPin.length >= 6) return;
       currentPin += n;
       updateDots();
-      if (currentPin.length === 6) {
-        setTimeout(checkPin, 160);
-      }
+      if (currentPin.length === 6) setTimeout(checkPin, 160);
     }
 
     document.getElementById('numpad').addEventListener('click', (e) => {
       const btn = e.target.closest('.num-btn');
       if (!btn) return;
       const n = btn.dataset.n;
-      if (n === 'clear') {
-        currentPin = '';
-        updateDots();
-      } else if (n === 'del') {
-        currentPin = currentPin.slice(0, -1);
-        updateDots();
-      } else {
-        addDigit(n);
-      }
+      if (n === 'clear') { currentPin = ''; updateDots(); }
+      else if (n === 'del') { currentPin = currentPin.slice(0, -1); updateDots(); }
+      else addDigit(n);
     });
 
     document.addEventListener('keydown', (e) => {
       if (portal.classList.contains('visible')) return;
       if (e.key >= '0' && e.key <= '9') addDigit(e.key);
-      if (e.key === 'Backspace') {
-        currentPin = currentPin.slice(0, -1);
-        updateDots();
-      }
-      if (e.key === 'Escape') {
-        currentPin = '';
-        updateDots();
-      }
+      if (e.key === 'Backspace') { currentPin = currentPin.slice(0, -1); updateDots(); }
+      if (e.key === 'Escape') { currentPin = ''; updateDots(); }
     });
 
     document.getElementById('lock-btn').addEventListener('click', lock);
@@ -598,19 +541,12 @@
       a.href = s.url;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      a.innerHTML = `
-        <div class="tile-title">${s.title}</div>
-        <div class="tile-url">${s.desc}</div>
-        <div class="tile-arrow">→</div>
-      `;
+      a.innerHTML = `<div class="tile-title">${s.title}</div><div class="tile-url">${s.desc}</div><div class="tile-arrow">→</div>`;
       tilesEl.appendChild(a);
     });
 
-    if (sessionStorage.getItem('stsola_unlocked') === '1') {
-      unlock();
-    }
+    if (sessionStorage.getItem('stsola_unlocked') === '1') unlock();
 
-    // ===== THEME AUDIO =====
     const audio = document.getElementById('theme-audio');
     const audioBar = document.getElementById('audio-bar');
     const playBtn = document.getElementById('audio-play');
@@ -618,35 +554,23 @@
     const progress = document.getElementById('audio-progress');
 
     playBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        playBtn.textContent = '❚❚';
-      } else {
-        audio.pause();
-        playBtn.textContent = '▶';
-      }
+      if (audio.paused) { audio.play(); playBtn.textContent = '❚❚'; }
+      else { audio.pause(); playBtn.textContent = '▶'; }
     });
 
     audio.addEventListener('play', () => { playBtn.textContent = '❚❚'; });
     audio.addEventListener('pause', () => { playBtn.textContent = '▶'; });
-
     audio.addEventListener('timeupdate', () => {
-      if (audio.duration) {
-        fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-      }
+      if (audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
     });
 
     progress.addEventListener('click', (e) => {
       if (!audio.duration) return;
       const rect = progress.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pct * audio.duration;
+      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
     });
 
-    // if already unlocked on load
-    if (sessionStorage.getItem('stsola_unlocked') === '1') {
-      audioBar.classList.add('visible');
-    }
+    if (sessionStorage.getItem('stsola_unlocked') === '1') audioBar.classList.add('visible');
   </script>
 </body>
 </html>
