@@ -1,29 +1,28 @@
 # St Sola // Portal
 
-Glass-tile launcher for the St Sola network.
-
+Glass-tile launcher + PIN lock + theme track.  
 **PIN:** `791313`
 
+## Cloudflare Pages (recommended)
+
+1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
+2. Select the `stsola-portal` repo (or this one)
+3. Build settings:
+   - Framework preset: **None**
+   - Build command: *(leave empty)*
+   - Build output directory: `/` (or leave default)
+4. Deploy
+
+Your site will be live at `https://stsola-portal.pages.dev` (or custom domain).
+
+### Local / other hosts
+Just serve the folder. `index.html` + `saint-sola.mp3` is all you need.
+
 ## Features
-- Cinematic 6-digit PIN lock screen + numpad
-- Real glassmorphism tiles (blur + glow)
-- Heat background matching the asset photo energy
-- All 9 sites live:
-  - StSola.com
-  - ITIA Galleria
-  - Ricordi
-  - Stzy Warroom
-  - StSola Vault
-  - MedAtlas
-  - Aura Web
-  - Saints Generator
-  - HangMeng
-- Session stays unlocked until you hit LOCK
+- 6-digit PIN gate
+- Glassmorphism tiles for all key sites
+- “Saint Sola” remix as portal theme (loops)
+- Session unlock + LOCK button
+- Mobile ready
 
-## Live
-Open the repo → Settings → Pages → Deploy from main branch → root.
-Or just open `index.html` locally.
-
-Repo: https://github.com/saintsola13/stsola-portal
-
-Built for the culture. Loyalty over bullshit.
+Loyalty over bullshit.
