@@ -1,28 +1,21 @@
-# St Sola // Portal
+# FCKOFF
 
-Glass-tile launcher + PIN lock + theme track.  
+Glass-tile portal + PIN lock + theme track.  
 **PIN:** `791313`
 
-## Cloudflare Pages (recommended)
+## Cloudflare Pages
 
-1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. Select the `stsola-portal` repo (or this one)
-3. Build settings:
-   - Framework preset: **None**
-   - Build command: *(leave empty)*
-   - Build output directory: `/` (or leave default)
-4. Deploy
-
-Your site will be live at `https://stsola-portal.pages.dev` (or custom domain).
-
-### Local / other hosts
-Just serve the folder. `index.html` + `saint-sola.mp3` is all you need.
+1. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
+2. Select this repo
+3. Framework preset: **None**
+4. Build command: empty
+5. Output directory: `/`
+6. Deploy
 
 ## Features
 - 6-digit PIN gate
-- Glassmorphism tiles for all key sites
-- “Saint Sola” remix as portal theme (loops)
-- Session unlock + LOCK button
-- Mobile ready
+- Glassmorphism tiles
+- FCKOFF theme track (loops)
+- Session unlock + LOCK
 
 Loyalty over bullshit.
