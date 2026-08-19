@@ -1,0 +1,4 @@
+name = "stsola-portal"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+account_id = "9808f1db3babbe209cf16e9eafcf8f6c"
