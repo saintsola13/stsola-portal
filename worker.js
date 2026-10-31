@@ -483,6 +483,8 @@ var worker_default = {
       { title: 'Saints Generator', url: 'https://saints-generator.pages.dev/', desc: 'saints-generator' },
       { title: 'HangMeng', url: 'https://hangmeng.pages.dev/', desc: 'hangmeng.pages.dev' },
       { title: 'M4SK', url: 'https://masklab.saintsola13.workers.dev/', desc: 'masklab.workers.dev' },
+      { title: 'NULL_', url: 'https://null-site.saintsola13.workers.dev/', desc: 'null-site.workers.dev' },
+      { title: 'Z00TZ Generator', url: 'https://z00tz-generator.netlify.app/', desc: 'z00tz-generator.netlify.app' },
     ];
 
     const lockScreen = document.getElementById('lock-screen');
