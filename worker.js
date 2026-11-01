@@ -476,7 +476,7 @@ var worker_default = {
       { title: 'ITIA Galleria', url: 'https://itiagalleria.xyz/', desc: 'itiagalleria.pages.dev' },
       { title: 'Okina Galleria', url: 'https://okinagalleria.xyz/', desc: 'okinagalleria.xyz' },
       { title: 'Ricordi', url: 'https://ricordi.pages.dev/', desc: 'ricordi.pages.dev' },
-      { title: 'Stzy Warroom', url: 'https://stzy-warroom.pages.dev/', desc: 'stzy-warroom.pages.dev' },
+      { title: 'Backroom Cabal', url: 'https://backroom-cabal.pages.dev/', desc: 'backroom-cabal.pages.dev' },
       { title: 'StSola Vault', url: 'https://stsolavault.saintsola13.workers.dev/', desc: 'stsolavault.workers.dev' },
       { title: 'MedAtlas', url: 'https://medatlas.icu/', desc: 'medatlas.icu' },
       { title: 'Aura Web', url: 'https://aura-web-preview.saintsola13.workers.dev/', desc: 'aura-web-preview' },
