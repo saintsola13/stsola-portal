@@ -403,9 +403,20 @@ var worker_default = {
       .tiles-grid { grid-template-columns: 1fr; gap: 0.85rem; }
       .numpad { max-width: 250px; }
     }
+    /* NULL_-style glitch background (black / teal / purple). Background only. */
+    body { background: #000; }
+    #gbg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; image-rendering: pixelated; opacity: .55; pointer-events: none; filter: contrast(1.35) saturate(1.15); }
+    #gfx { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: repeating-linear-gradient(0deg, rgba(0,0,0,.45) 0 1px, transparent 1px 3px), radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.9) 100%); }
+    #gfx i { position: absolute; font-style: normal; user-select: none; }
+    #gfx .g { left: 50%; top: 52%; font: 900 70vmin/1 ui-monospace, Menlo, monospace; color: #9b4dff; opacity: .08; transform: translate(-50%,-50%); animation: gng 4.3s steps(1) infinite; }
+    #gfx .h { right: 3vw; bottom: 2vh; font: 700 3.2vmin ui-monospace, Menlo, monospace; color: #00e5cc; opacity: .22; letter-spacing: .4em; animation: gnf 2.7s steps(1) infinite; }
+    @keyframes gng { 0%,84%,100% { clip-path: none; transform: translate(-50%,-50%); color: #9b4dff; } 85% { clip-path: inset(18% 0 58% 0); transform: translate(-44%,-50%); } 87% { clip-path: inset(62% 0 8% 0); transform: translate(-57%,-49%); color: #00e5cc; } 89% { opacity: .14; transform: translate(-50%,-50%) scaleX(1.3); color: #00e5cc; } 91% { clip-path: inset(40% 0 40% 0); transform: translate(-62%,-50%); } }
+    @keyframes gnf { 0%,90%,100% { opacity: .22; } 92% { opacity: .6; transform: translateX(-6px); color: #b47bff; } 95% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { #gfx .g, #gfx .h { animation: none !important; } }
   </style>
 </head>
 <body>
+  <canvas id="gbg" aria-hidden="true"></canvas><div id="gfx" aria-hidden="true"><i class="g">∅</i><i class="h">0x00</i></div>
   <div id="app">
     <div id="lock-screen">
       <div class="logo">FCKOFF</div>
@@ -586,6 +597,64 @@ var worker_default = {
     });
 
     if (sessionStorage.getItem('stsola_unlocked') === '1') audioBar.classList.add('visible');
+  <\/script>
+  <script>
+(function () {
+  var c = document.getElementById('gbg'); if (!c || !c.getContext) return;
+  var reduce = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  var x = c.getContext('2d', { alpha: false }); if (!x) return;
+  var TEAL = [0, 229, 204], PURP = [155, 77, 255], HOT = [200, 255, 248];
+  var W, H, WH, img, d, N;
+  function px(col, v) { return 0xff000000 | (((col[2] * v) >> 8) << 16) | (((col[1] * v) >> 8) << 8) | ((col[0] * v) >> 8); }
+  function setup() {
+    var ar = (innerHeight || 1) / (innerWidth || 1);
+    W = 192; H = Math.max(80, Math.min(420, Math.round(W * ar))); WH = W * H; c.width = W; c.height = H;
+    img = x.createImageData(W, H); d = new Uint32Array(img.data.buffer);
+    N = new Uint32Array(WH * 3);
+    for (var i = 0; i < N.length; i++) {
+      var r = Math.random(), v = r < 0.82 ? (r * 70) | 0 : r < 0.97 ? (r * 180) | 0 : 255;
+      var col = v === 255 ? (Math.random() < 0.5 ? HOT : PURP) : (Math.random() < 0.55 ? TEAL : PURP);
+      N[i] = px(col, v);
+    }
+  }
+  var WORDS = ['\u2205', '0x00', 'NULL_', '\u2205', 'NO CARRIER', '0x00'], burn = 0, word = '\u2205', bx = 0, by = 0, bcol = '#00e5cc';
+  function draw() {
+    var o = (Math.random() * WH * 2) | 0; d.set(N.subarray(o, o + WH));
+    var tears = Math.random() < 0.5 ? 1 + ((Math.random() * 3) | 0) : 0;
+    for (var k = 0; k < tears; k++) {
+      var y = (Math.random() * H) | 0, h = 1 + ((Math.random() * 10) | 0), s = ((Math.random() * 80) | 0) - 40, inv = Math.random() < 0.3, ic = Math.random() < 0.5 ? TEAL : PURP;
+      for (var r = y; r < Math.min(H, y + h); r++) {
+        var row = d.slice(r * W, (r + 1) * W);
+        for (var i = 0; i < W; i++) {
+          var p = row[(i - s + W) % W];
+          if (inv) { var vv = 255 - Math.max(p & 255, (p >> 8) & 255, (p >> 16) & 255); p = px(ic, vv >> 1); }
+          d[r * W + i] = p;
+        }
+      }
+    }
+    if (Math.random() < 0.25) {
+      var bw = 8 * (1 + ((Math.random() * 4) | 0)), bh = 8 * (1 + ((Math.random() * 2) | 0)), X = 8 * ((Math.random() * (W / 8)) | 0), Y = 8 * ((Math.random() * (H / 8)) | 0);
+      var bv = Math.random() < 0.5 ? 0xff000000 : px(Math.random() < 0.5 ? TEAL : PURP, 210);
+      for (var r2 = Y; r2 < Math.min(H, Y + bh); r2++) for (var i2 = X; i2 < Math.min(W, X + bw); i2++) if ((i2 ^ r2) & 2) d[r2 * W + i2] = bv;
+    }
+    x.putImageData(img, 0, 0);
+    if (!burn && Math.random() < 0.03) { burn = 6 + ((Math.random() * 14) | 0); word = WORDS[(Math.random() * WORDS.length) | 0]; bx = W / 2 + (Math.random() * 40 - 20); by = H / 2 + 10; bcol = Math.random() < 0.5 ? '#00e5cc' : '#a35cff'; }
+    if (burn) {
+      burn--; x.font = '900 ' + (word.length > 2 ? 22 : 64) + 'px monospace'; x.textAlign = 'center';
+      x.fillStyle = Math.random() < 0.2 ? '#000' : bcol; x.fillText(word, bx, by);
+      var sy = (Math.random() * H) | 0, sh = 4 + ((Math.random() * 16) | 0);
+      x.drawImage(c, 0, sy, W, sh, ((Math.random() * 24) | 0) - 12, sy, W, sh);
+    }
+  }
+  var raf = 0, last = 0;
+  function loop(ts) { raf = 0; if (document.hidden || reduce.matches) return; raf = requestAnimationFrame(loop); if (ts - last < 83) return; last = ts; draw(); }
+  function start() { if (!raf && !document.hidden && !reduce.matches) raf = requestAnimationFrame(loop); }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  setup(); draw(); start();
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+  if (reduce.addEventListener) reduce.addEventListener('change', function () { if (reduce.matches) { stop(); draw(); } else start(); });
+  var rt = 0; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { setup(); draw(); }, 200); });
+})();
   <\/script>
 </body>
 </html>
